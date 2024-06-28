@@ -5,20 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Program_studi extends Model
+class ProgramStudi extends Model
 {
     use HasFactory;
-    protected $table = 'program_studis';
-    protected $primaryKey = 'id';
-    protected $fillable = [
-        'kode_prodi',
-        'nama_prodi',
-        'fakultas_id',
-    ];
+
+    protected $fillable = ['kode_prodi', 'nama_prodi', 'kode_fakultas'];
 
     public function fakultas()
     {
-        return $this->belongsTo(Fakultas::class, 'fakultas_id');
+        return $this->belongsTo(Fakultas::class, 'kode_fakultas');
     }
-
 }
