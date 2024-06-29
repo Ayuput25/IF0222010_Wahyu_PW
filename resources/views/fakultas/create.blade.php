@@ -1,29 +1,60 @@
-@extends('adminlte::page')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tambah Data Fakultas - SantriKoding.com</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background: lightgray">
 
-@section('title', 'Tambah Fakultas')
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card border-0 shadow-sm rounded">
+                    <div class="card-body">
+                        <form action="{{ route('fakultas.store') }}" method="POST" >
+                        
+                            @csrf
 
-@section('content_header')
-    <h1>Tambah Fakultas</h1>
-@stop
+                            <div class="form-group">
+                                <label class="font-weight-bold">Nama Fakultas</label>
+                                <input type="text" class="form-control @error('nama_fakultas') is-invalid @enderror" name="nama_fakultas" value="{{ old('nama_fakultas') }}" placeholder="Masukkan Nama Fakultas">
+                            
+                                <!-- error message untuk nama_fakultas -->
+                                @error('nama_fakultas')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <form action="{{ route('fakultas.store') }}" method="POST">
-                @csrf
-                <div class="mb-3">
-                    <label for="nama_fakultas" class="form-label">Nama Fakultas</label>
-                    <input type="text" class="form-control" id="nama_fakultas" name="nama_fakultas" required>
+                            <div class="form-group">
+                                <label class="font-weight-bold">Pimpinan Fakultas</label>
+                                <input type="text" class="form-control @error('pimpinan_fakultas') is-invalid @enderror" name="pimpinan_fakultas" value="{{ old('pimpinan_fakultas') }}" placeholder="Masukkan Nama Pimpinan Fakultas">
+                            
+                                <!-- error message untuk pimpinan_fakultas -->
+                                @error('pimpinan_fakultas')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
+                            <button type="reset" class="btn btn-md btn-warning">RESET</button>
+
+                        </form> 
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="pimpinan_fakultas" class="form-label">Pimpinan Fakultas</label>
-                    <input type="text" class="form-control" id="pimpinan_fakultas" name="pimpinan_fakultas" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Simpan</button>
-                <a href="{{ route('fakultas.index') }}" class="btn btn-secondary">Kembali</a>
-            </form>
+            </div>
         </div>
     </div>
-</div>
-@endsection
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+
+</body>
+</html>

@@ -307,13 +307,20 @@ return [
 
         // Sidebar items:
         [
-            'type' => 'sideb`ar-menu-search',
+            'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
         [
             'text' => 'blog',
             'url' => 'admin/blog',
             'can' => 'manage-blog',
+        ],
+        [
+            'text' => 'pages',
+            'url' => 'admin/pages',
+            'icon' => 'far fa-fw fa-file',
+            'label' => 4,
+            'label_color' => 'success',
         ],
         ['header' => 'account_settings'],
         [
@@ -331,16 +338,31 @@ return [
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'Program Studi',
-                    'url' => '/program-studi',
+                    'text' => 'Data Program Studi',
+                    'url' => 'posts',
                 ],
                 [
-                    'text' => 'Fakultas',
-                    'url' => '/fakultas',
-                ],
+                    'text' => 'Data Fakultas',
+                    'url' => 'fakultas',
+                ]
             ],
         ],
-        
+        ['header' => 'labels'],
+        [
+            'text' => 'important',
+            'icon_color' => 'red',
+            'url' => '#',
+        ],
+        [
+            'text' => 'warning',
+            'icon_color' => 'yellow',
+            'url' => '#',
+        ],
+        [
+            'text' => 'information',
+            'icon_color' => 'cyan',
+            'url' => '#',
+        ],
     ],
 
     /*

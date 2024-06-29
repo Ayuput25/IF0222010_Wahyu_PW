@@ -8,11 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Fakultas extends Model
 {
     use HasFactory;
+    protected $table = "fakultas";
+    protected $primaryKey = "id";
+    protected $fillable = [
+        'nama_fakultas',
+        'pimpinan_fakultas',
+    ];
 
-    protected $fillable = ['nama_fakultas', 'pimpinan_fakultas'];
-
-    public function programStudis()
+    public function program_studis()
     {
-        return $this->hasMany(ProgramStudi::class, 'kode_fakultas');
+        return $this->hasMany(Program_studi::class, 'fakultas_id');
     }
 }

@@ -1,30 +1,58 @@
-@extends('adminlte::page')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Data Fakultas - SantriKoding.com</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background: lightgray">
 
-@section('title', 'Edit Fakultas')
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card border-0 shadow-sm rounded">
+                    <div class="card-body">
+                        <form action="{{ route('fakultas.update', $dataFakultas->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
 
-@section('content_header')
-    <h1>Edit Fakultas</h1>
-@stop
+                            <div class="form-group">
+                                <label class="font-weight-bold">Nama Fakultas</label>
+                                <input type="text" class="form-control @error('nama_fakultas') is-invalid @enderror" name="nama_fakultas" value="{{ old('nama_fakultas', $dataFakultas->nama_fakultas) }}" placeholder="Masukkan Nama Fakultas">
+                            
+                                <!-- error message untuk nama_fakultas -->
+                                @error('nama_fakultas')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <form action="{{ route('fakultas.update', $fakultas->id) }}" method="POST">
-                @csrf
-                @method('PUT')
-                <div class="mb-3">
-                    <label for="nama_fakultas" class="form-label">Nama Fakultas</label>
-                    <input type="text" class="form-control" id="nama_fakultas" name="nama_fakultas" value="{{ $fakultas->nama_fakultas }}" required>
+                            <div class="form-group">
+                                <label class="font-weight-bold">Pimpinan Fakultas</label>
+                                <input type="text" class="form-control @error('pimpinan_fakultas') is-invalid @enderror" name="pimpinan_fakultas" value="{{ old('pimpinan_fakultas', $dataFakultas->pimpinan_fakultas) }}" placeholder="Masukkan Nama Pimpinan Fakultas">
+                            
+                                <!-- error message untuk pimpinan_fakultas -->
+                                @error('pimpinan_fakultas')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <button type="submit" class="btn btn-md btn-primary">UPDATE</button>
+                            <a href="{{ route('fakultas.index') }}" class="btn btn-md btn-secondary">KEMBALI</a>
+
+                        </form> 
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="pimpinan_fakultas" class="form-label">Pimpinan Fakultas</label>
-                    <input type="text" class="form-control" id="pimpinan_fakultas" name="pimpinan_fakultas" value="{{ $fakultas->pimpinan_fakultas }}" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Update</button>
-                <a href="{{ route('fakultas.index') }}" class="btn btn-secondary">Kembali</a>
-            </form>
+            </div>
         </div>
     </div>
-</div>
-@endsection
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
